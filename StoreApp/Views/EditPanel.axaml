@@ -1,0 +1,37 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:StoreApp.ViewModels"
+        x:DataType="vm:EditPanelViewModel"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="StoreApp.Views.EditPanel"
+        Title="EditPanel">
+        <Panel>
+                <StackPanel 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Spacing="5"
+                        Width="210">
+                        <TextBlock 
+                                Text="Неверный формат стоимости"
+                                IsVisible="False"/>
+                        <TextBox
+                                Watermark="Название"
+                                Name="ProductName"
+                                Text="{Binding }"/>
+                        <TextBox
+                                Watermark="Описание"
+                                Name="ProductDescription"
+                                Text="{Binding }"/>
+                        <TextBox
+                                Watermark="Стоимость"
+                                Name="ProductCost"
+                                Text="{Binding }"/>
+                        <Button
+                                Content="Добавить"
+                                HorizontalAlignment="Center"
+                        />
+                </StackPanel>     
+        </Panel>
+</Window>

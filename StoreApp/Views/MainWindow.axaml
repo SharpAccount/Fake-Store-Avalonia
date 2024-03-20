@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:StoreApp.ViewModels"
+        x:Class="StoreApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Width="1920" Height="1080"
+        WindowState="Maximized"
+        Title="StoreApp">
+
+    <DockPanel HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Функции администратора">
+                <MenuItem Header="Добавить товар"
+                          Click="OpenEditPanel"/>
+                <MenuItem Header="Редактировать"
+                          Click="OpenAddPanel"/>
+            </MenuItem>
+            <MenuItem Header="Корзина"
+                      Click="OpenCartPanel"/>
+        </Menu>
+        <Grid ColumnDefinitions="*"
+              Width="1500"
+              Height="1000">
+                
+            <ListBox Margin = "12,0,0,0"
+                     BorderBrush="#8943AA"
+                     CornerRadius="10"
+                     Background="Transparent"
+                     ItemsSource="{Binding Products}"
+                     BorderThickness="3"
+                     Grid.Column="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel LastChildFill="True">
+                            <CheckBox DockPanel.Dock="Right"/>
+                            <Button Content="Добавить товар"/>
+                            <StackPanel Background="Transparent" HorizontalAlignment="Stretch">
+                                <TextBlock Text="{Binding Name}" Name="login" Padding="15 0 0 0"/>
+                                <TextBlock Text="{Binding Price}" Padding="15 0 0 0"/>
+                                <TextBlock Text="{Binding Quantity}" Padding="15 0 0 0"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </DockPanel>
+
+</Window>

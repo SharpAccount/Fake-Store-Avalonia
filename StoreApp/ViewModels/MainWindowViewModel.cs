@@ -6,16 +6,23 @@ namespace StoreApp.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    private ObservableCollection<Product> _products = new();
+    private static ObservableCollection<Product> _products = new();
+    private static ObservableCollection<Product> _selected = new();
 
-    private string? _productName;
+    private string _productName;
     private int _productPrice;
     private int _productQuantity;
 
-    public ObservableCollection<Product> Products
+    public static ObservableCollection<Product> Products
     {
         get => _products;
         set => _products = value;
+    }
+    
+    public static ObservableCollection<Product> SelectedProducts
+    {
+        get => _selected;
+        set => _selected = value;
     }
 
     public string ProductName

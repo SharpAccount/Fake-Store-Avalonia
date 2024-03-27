@@ -2,8 +2,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:StoreApp.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="StoreApp.Views.AddPanel"
+        x:DataType="vm:AddPanelViewModel"
         Title="AddPanel">
-    Welcome to Avalonia!
+    <Panel>
+        <StackPanel 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Spacing="5"
+            Width="210">
+            <TextBox
+                Watermark="Название"
+                Name="ProductName"
+                Text="{Binding ProductName }"/>
+            <TextBlock 
+                Text="Cтоимость"
+                FontSize="10"/>
+            <TextBlock 
+                Text="Неверный формат стоимости"
+                Name="WrongCostEx"
+                IsVisible="False"
+                FontSize="10"
+                Foreground="Red"/>
+            <TextBox
+                Watermark="Стоимость"
+                Name="ProductCost"
+                Text="{Binding  ProductPrice}"/>
+            <TextBlock 
+                Text="Количество"
+                FontSize="10"/>
+            <TextBlock 
+                Text="Неверный формат количества"
+                Name="WrongQuantityEx"
+                IsVisible="False"
+                FontSize="10"
+                Foreground="Red"/>
+            <TextBox
+                Watermark="Количество"
+                Name="ProductQuantity"
+                Text="{Binding  ProductQuantity}"/>
+            <Button
+                Content="Добавить"
+                HorizontalAlignment="Center"
+                Command="{Binding AddProduct}"
+            />
+        </StackPanel>     
+    </Panel>
 </Window>

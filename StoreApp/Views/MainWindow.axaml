@@ -14,9 +14,9 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Функции администратора">
                 <MenuItem Header="Добавить товар"
-                          Click="OpenEditPanel"/>
-                <MenuItem Header="Редактировать"
                           Click="OpenAddPanel"/>
+                <MenuItem Header="Редактировать"
+                          Click="OpenEditPanel"/>
             </MenuItem>
             <MenuItem Header="Корзина"
                       Click="OpenCartPanel"/>
@@ -31,16 +31,18 @@
                      Background="Transparent"
                      ItemsSource="{Binding Products}"
                      BorderThickness="3"
-                     Grid.Column="1">
+                     Grid.Column="1"
+                     SelectionMode="Multiple"
+                     SelectedItems="{Binding SelectedProducts}"
+                     Name="ProductList">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel LastChildFill="True">
-                            <CheckBox DockPanel.Dock="Right"/>
-                            <Button Content="Добавить товар"/>
+                            <Button Content="В корзину"/>
                             <StackPanel Background="Transparent" HorizontalAlignment="Stretch">
-                                <TextBlock Text="{Binding Name}" Name="login" Padding="15 0 0 0"/>
-                                <TextBlock Text="{Binding Price}" Padding="15 0 0 0"/>
-                                <TextBlock Text="{Binding Quantity}" Padding="15 0 0 0"/>
+                                <TextBlock Text="{Binding Name}" Name="ProductName" Padding="15 0 0 0"/>
+                                <TextBlock Text="{Binding Price}" Name="ProductPrice" Padding="15 0 0 0"/>
+                                <TextBlock Text="{Binding Quantity}" Name="ProductQuantity" Padding="15 0 0 0"/>
                             </StackPanel>
                         </DockPanel>
                     </DataTemplate>
@@ -48,5 +50,4 @@
             </ListBox>
         </Grid>
     </DockPanel>
-
 </Window>

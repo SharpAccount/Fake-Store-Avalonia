@@ -19,19 +19,19 @@
                         <TextBox
                                 Watermark="Название"
                                 Name="ProductName"
-                                Text="{Binding }"/>
-                        <TextBox
-                                Watermark="Описание"
-                                Name="ProductDescription"
-                                Text="{Binding }"/>
+                                Text="{Binding ProductName}"/>
                         <TextBox
                                 Watermark="Стоимость"
                                 Name="ProductCost"
-                                Text="{Binding }"/>
+                                Text="{Binding ProductPrice}"/>
+                        <TextBox
+                                Watermark="Количество"
+                                Name="ProductQuantity"
+                                Text="{Binding ProductQuantity}"/>
                         <Button
-                                Content="Добавить"
+                                Content="Изменить"
                                 HorizontalAlignment="Center"
-                        />
+                                Command="{Binding SetProductFields}"/>
                 </StackPanel>     
         </Panel>
 </Window>

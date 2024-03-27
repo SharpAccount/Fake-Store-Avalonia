@@ -2,8 +2,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:StoreApp.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="StoreApp.Views.CartPanel"
+        x:DataType="vm:CartViewModel"
         Title="CartPanel">
-    Welcome to Avalonia!
+    <Grid ColumnDefinitions="Auto, *"
+          Margin="10">
+        <StackPanel Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сумма:"/>
+                <TextBlock Text="{Binding Total}"/>
+            </StackPanel>
+            <Button Content="Купить"
+                    Command="{Binding ClearSelected}"/>
+            <Button Content="Удалить"
+                    Command="{Binding}"/>
+        </StackPanel>
+        <ListBox Grid.Column="1"
+                 BorderBrush="#8943AA"
+                 BorderThickness="3"
+                 CornerRadius="10"
+                 ItemsSource="{Binding AddedCurrent}">
+            <ListBox.ItemTemplate>
+            <DataTemplate>
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                        <Button Content="+" Click="IncreaseQuantity"/>
+                        <TextBlock Text="{Binding Quantity}"/>
+                        <Button Content="-"/>
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Left">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Price}"/>
+                    </StackPanel>
+                </DockPanel>
+            </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
 </Window>

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using StoreApp.Models;
 
 namespace StoreApp.ViewModels;
 
-public class CartViewModel: MainWindowViewModel
+public class CartViewModel: MainWindowViewModel, INotifyPropertyChanged
 {
     private ObservableCollection<Product> added = new ();
     private ObservableCollection<Product> addedCurrent = new ();
@@ -31,7 +32,11 @@ public class CartViewModel: MainWindowViewModel
     public string Total
     {
         get => total;
-        set => total = value;
+        set
+        {
+            total = value;
+            OnPropertyChanged(nameof(Total));
+        } 
     }
 
     public int CurrentQuantity
@@ -40,7 +45,7 @@ public class CartViewModel: MainWindowViewModel
         set => currentQuantity = value;
     }
 
-    private void setTotal()
+    internal void setTotal()
     {
         int sum = 0;
         foreach (Product prod in addedCurrent)
@@ -50,17 +55,39 @@ public class CartViewModel: MainWindowViewModel
         Total = sum.ToString();
     }
 
+    internal void DeleteSelected(Product selected)
+    {
+        AddedCurrent.Remove(selected);
+        setTotal();
+    }
+
     internal void ClearSelected()
     {
-        try
+        foreach (Product bought in addedCurrent)
         {
-            AddedCurrent.Clear();
-            setTotal();
+            for (int i = 0; i < Products.Count; i++)
+            {
+                if (bought.Name == Products[i].Name)
+                {
+                    if (bought.Quantity != Products[i].Quantity)
+                    {
+                        Products[i].Quantity -= bought.Quantity;
+                    }
+                    else
+                    {
+                        Products.RemoveAt(i);
+                    }
+                }
+            }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine(AddedCurrent);
-            throw new Exception("some shit happens sometimes");
-        }
+        AddedCurrent.Clear();
+        setTotal();
+    }
+    
+    public event PropertyChangedEventHandler PropertyChanged;
+    
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

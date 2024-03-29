@@ -8,46 +8,53 @@
         WindowState="Maximized"
         Title="StoreApp">
 
-    <DockPanel HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               LastChildFill="True">
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Функции администратора">
-                <MenuItem Header="Добавить товар"
-                          Click="OpenAddPanel"/>
-                <MenuItem Header="Редактировать"
-                          Click="OpenEditPanel"/>
-            </MenuItem>
-            <MenuItem Header="Корзина"
-                      Click="OpenCartPanel"/>
-        </Menu>
+    <Panel HorizontalAlignment="Center"
+               VerticalAlignment="Center">
         <Grid ColumnDefinitions="*"
+              RowDefinitions="Auto *"
               Width="1500"
               Height="1000">
-                
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Margin="15 0">
+                <Button Content="Добавить" Click="OpenAddPanel"/>
+                <Button Content="Редактировать" Click="OpenEditPanel"/>
+                <Button Content="Корзина" Click="OpenCartPanel"/>
+            </StackPanel>
             <ListBox Margin = "12,0,0,0"
                      BorderBrush="#8943AA"
                      CornerRadius="10"
                      Background="Transparent"
                      ItemsSource="{Binding Products}"
                      BorderThickness="3"
-                     Grid.Column="1"
                      SelectionMode="Multiple"
                      SelectedItems="{Binding SelectedProducts}"
-                     Name="ProductList">
+                     Name="ProductList"
+                     Grid.Row="1">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel LastChildFill="True">
-                            <Button Content="В корзину"/>
                             <StackPanel Background="Transparent" HorizontalAlignment="Stretch">
-                                <TextBlock Text="{Binding Name}" Name="ProductName" Padding="15 0 0 0"/>
-                                <TextBlock Text="{Binding Price}" Name="ProductPrice" Padding="15 0 0 0"/>
-                                <TextBlock Text="{Binding Quantity}" Name="ProductQuantity" Padding="15 0 0 0"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Название"/>
+                                    <TextBlock Text="{Binding Name}" Name="ProductName" Padding="15 0 0 0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Стоимость"/>
+                                    <TextBlock Text="{Binding Price}" Name="ProductPrice" Padding="15 0 0 0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Количество"/>
+                                    <TextBlock Text="{Binding Quantity}" Name="ProductQuantity" Padding="15 0 0 0"/>
+                                </StackPanel>
                             </StackPanel>
+                                <Panel MaxHeight="100" MaxWidth="200" VerticalAlignment="Center">
+                                    <Image  Source="{Binding Image}"/>
+                                </Panel>
                         </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-    </DockPanel>
+    </Panel>
 </Window>

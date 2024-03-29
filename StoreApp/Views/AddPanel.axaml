@@ -13,19 +13,15 @@
             VerticalAlignment="Center"
             Spacing="5"
             Width="210">
+            <TextBlock 
+                Text="Название товара"
+                FontSize="10"/>
             <TextBox
-                Watermark="Название"
                 Name="ProductName"
                 Text="{Binding ProductName }"/>
             <TextBlock 
                 Text="Cтоимость"
                 FontSize="10"/>
-            <TextBlock 
-                Text="Неверный формат стоимости"
-                Name="WrongCostEx"
-                IsVisible="False"
-                FontSize="10"
-                Foreground="Red"/>
             <TextBox
                 Watermark="Стоимость"
                 Name="ProductCost"
@@ -33,21 +29,17 @@
             <TextBlock 
                 Text="Количество"
                 FontSize="10"/>
-            <TextBlock 
-                Text="Неверный формат количества"
-                Name="WrongQuantityEx"
-                IsVisible="False"
-                FontSize="10"
-                Foreground="Red"/>
             <TextBox
                 Watermark="Количество"
                 Name="ProductQuantity"
                 Text="{Binding  ProductQuantity}"/>
+            <Button Content="Установить фото" 
+                    Command="{Binding Setmage}"
+                    HorizontalAlignment="Center"/>
             <Button
                 Content="Добавить"
                 HorizontalAlignment="Center"
-                Command="{Binding AddProduct}"
-            />
+                Command="{Binding AddProduct}"/>
         </StackPanel>     
     </Panel>
 </Window>

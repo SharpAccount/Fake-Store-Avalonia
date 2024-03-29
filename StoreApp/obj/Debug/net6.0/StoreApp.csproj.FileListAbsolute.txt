@@ -134,3 +134,4 @@ C:\Users\Bozhenka\RiderProjects\StoreApp\StoreApp\obj\Debug\net6.0\StoreApp.pdb
 C:\Users\Bozhenka\RiderProjects\StoreApp\StoreApp\obj\Debug\net6.0\StoreApp.csproj.Up2Date
 C:\Users\Bozhenka\RiderProjects\StoreApp\StoreApp\obj\Debug\net6.0\StoreApp.genruntimeconfig.cache
 C:\Users\Bozhenka\RiderProjects\StoreApp\StoreApp\obj\Debug\net6.0\ref\StoreApp.dll
+C:\Users\Bozhenka\RiderProjects\StoreApp\StoreApp\obj\Debug\net6.0\StoreApp.sourcelink.json

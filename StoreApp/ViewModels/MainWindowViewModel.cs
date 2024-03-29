@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Reactive.Linq;
 using StoreApp.Models;
 
 namespace StoreApp.ViewModels;

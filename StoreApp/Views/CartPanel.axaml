@@ -17,24 +17,35 @@
             <Button Content="Купить"
                     Command="{Binding ClearSelected}"/>
             <Button Content="Удалить"
-                    Command="{Binding}"/>
+                    Click="DeleteSelected"/>
         </StackPanel>
         <ListBox Grid.Column="1"
                  BorderBrush="#8943AA"
                  BorderThickness="3"
                  CornerRadius="10"
-                 ItemsSource="{Binding AddedCurrent}">
+                 ItemsSource="{Binding AddedCurrent}"
+                 SelectionMode="Single"
+                 Name="Cart">
             <ListBox.ItemTemplate>
             <DataTemplate>
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
                         <Button Content="+" Click="IncreaseQuantity"/>
-                        <TextBlock Text="{Binding Quantity}"/>
-                        <Button Content="-"/>
+                        <TextBlock Text="{Binding Quantity}" Margin="3 0" VerticalAlignment="Center" FontSize="20"/>
+                        <Button Content="-" Click="DecreaseQuantity"/>
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Left">
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding Price}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Название"/>
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Цена"/>
+                            <TextBlock Text="{Binding Price}"/>
+                        </StackPanel>
+                        <Panel MaxHeight="100" MaxWidth="200">
+                            <Image Source="{Binding Image}"/>
+                        </Panel>
                     </StackPanel>
                 </DockPanel>
             </DataTemplate>

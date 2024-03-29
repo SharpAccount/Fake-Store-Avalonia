@@ -31,7 +31,7 @@ public partial class MainWindow : Window
     
     public void OpenCartPanel(object sender, RoutedEventArgs args)
     {
-        dynamic added = ((ObservableCollection<Product>)ProductList.SelectedItems).Select(el => new Product(el.Name, el.Price, el.Quantity));
+        dynamic added = ((ObservableCollection<Product>)ProductList.SelectedItems).Select(el => new Product(el.Name, el.Price, el.Quantity, el.Image));
         ObservableCollection<Product> copiedAdded = new ObservableCollection<Product>(added);
         new CartPanel(copiedAdded).Show();
     }

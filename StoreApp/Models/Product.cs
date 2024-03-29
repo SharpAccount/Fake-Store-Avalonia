@@ -1,17 +1,16 @@
-﻿using System;
-using System.ComponentModel;
-using Avalonia.Automation;
-using Tmds.DBus.Protocol;
+﻿using Avalonia.Media.Imaging;
+using StoreApp.Helpers;
 
 namespace StoreApp.Models;
 
-public class Product : INotifyPropertyChanged
+public class Product : EventHelper
 {
 
     private string _name;
     private int _price;
     private int _quantity;
     private int _maxQuantity;
+    private Bitmap image;
     public string Name
     {
         get => _name;
@@ -37,31 +36,30 @@ public class Product : INotifyPropertyChanged
         get => _quantity;
         set
         {
-            if (_quantity > _maxQuantity)
-            {
-                _quantity = _maxQuantity;
-                OnPropertyChanged(nameof(Quantity));
-            }
-            else
+            if (_maxQuantity >= value)
             {
                 _quantity = value;
                 OnPropertyChanged(nameof(Quantity));
             }
         }
     }
+
+    public Bitmap Image
+    {
+        get => image;
+        set
+        {
+            image = value;
+            OnPropertyChanged(nameof(Image));
+        } 
+    }
     
-    public Product(string name, int price, int quantity)
+    public Product(string name, int price, int quantity, Bitmap img)
     {
         Name = name;
         Price = price;
-        Quantity = quantity;
         _maxQuantity = quantity;
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        Quantity = quantity;
+        Image = img;
     }
 }

@@ -19,7 +19,7 @@
                         <TextBox
                                 Watermark="Название"
                                 Name="ProductName"
-                                Text="{Binding ProductName}"/>
+                                Text="{Binding NameToChange}"/>
                         <TextBox
                                 Watermark="Стоимость"
                                 Name="ProductCost"

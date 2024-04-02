@@ -1,10 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.LogicalTree;
 using StoreApp.Models;
 using StoreApp.ViewModels;
 
@@ -21,7 +18,10 @@ public partial class MainWindow : Window
     public void OpenEditPanel(object sender, RoutedEventArgs args)
     {
         Product SelectedProduct = (Product)ProductList.SelectedItem;
-        new EditPanel(SelectedProduct).Show();
+        if (SelectedProduct is not null)
+        {
+            new EditPanel(SelectedProduct).Show();
+        }
     }
     
     public void OpenAddPanel(object sender, RoutedEventArgs args)

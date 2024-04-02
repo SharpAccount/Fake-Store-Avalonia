@@ -18,5 +18,5 @@ public partial class EditPanel : Window
         ProductQuantity.Text = product.Quantity.ToString();
     }
     
-    
+    public EditPanel(){}
 }

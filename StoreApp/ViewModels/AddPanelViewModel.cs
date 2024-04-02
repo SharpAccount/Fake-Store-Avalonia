@@ -46,7 +46,7 @@ public class AddPanelViewModel : MainWindowViewModel
         return true;
     }
 
-    public async void Setmage()
+    public async void SetImage()
     {
         OpenFileDialog explorer = new OpenFileDialog();
         explorer.AllowMultiple = false;

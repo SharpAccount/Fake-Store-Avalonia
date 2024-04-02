@@ -28,6 +28,8 @@
                                 Watermark="Количество"
                                 Name="ProductQuantity"
                                 Text="{Binding ProductQuantity}"/>
+                        <Button Content="Изменить фото"
+                                Command="{Binding ChangeImage}"/>
                         <Button
                                 Content="Изменить"
                                 HorizontalAlignment="Center"

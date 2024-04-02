@@ -34,7 +34,7 @@
                 Name="ProductQuantity"
                 Text="{Binding  ProductQuantity}"/>
             <Button Content="Установить фото" 
-                    Command="{Binding Setmage}"
+                    Command="{Binding SetImage}"
                     HorizontalAlignment="Center"/>
             <Button
                 Content="Добавить"

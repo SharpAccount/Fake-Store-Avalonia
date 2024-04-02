@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using StoreApp.Models;
 using StoreApp.ViewModels;
 
@@ -15,6 +13,8 @@ public partial class CartPanel : Window
         InitializeComponent();
         DataContext = new CartViewModel(_added);
     }
+    
+    public CartPanel(){}
 
     public void IncreaseQuantity(object sender, RoutedEventArgs args)
     {

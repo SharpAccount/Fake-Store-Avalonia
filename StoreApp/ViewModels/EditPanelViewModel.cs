@@ -68,7 +68,7 @@ public class EditPanelViewModel: MainWindowViewModel
         {
             foreach (Product prod in Products)
             {
-                if (prod.Name == name)
+                if (prod.Name == name && prod.Name != originalName)
                 {
                     return true;
                 }

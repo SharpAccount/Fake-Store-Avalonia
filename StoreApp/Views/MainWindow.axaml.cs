@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Controls;
@@ -9,6 +10,7 @@ namespace StoreApp.Views;
 
 public partial class MainWindow : Window
 {
+    private List<Window> windows = new List<Window>();
     public MainWindow()
     {
         InitializeComponent();
@@ -20,19 +22,39 @@ public partial class MainWindow : Window
         Product SelectedProduct = (Product)ProductList.SelectedItem;
         if (SelectedProduct is not null)
         {
-            new EditPanel(SelectedProduct).Show();
+            Window editPanel = new EditPanel(SelectedProduct);
+            closeAll(editPanel);
+            editPanel.Show();
+            windows.Add(editPanel);
         }
     }
     
     public void OpenAddPanel(object sender, RoutedEventArgs args)
     {
-        new AddPanel().Show();
+        Window addPanel = new AddPanel();
+        closeAll(addPanel);
+        addPanel.Show();
+        windows.Add(addPanel);
     }
     
     public void OpenCartPanel(object sender, RoutedEventArgs args)
     {
         dynamic added = ((ObservableCollection<Product>)ProductList.SelectedItems).Select(el => new Product(el.Name, el.Price, el.Quantity, el.Image));
         ObservableCollection<Product> copiedAdded = new ObservableCollection<Product>(added);
-        new CartPanel(copiedAdded).Show();
+        Window cartPanel = new CartPanel(copiedAdded);
+        closeAll(cartPanel);
+        cartPanel.Show();
+        windows.Add(cartPanel);
+    }
+
+    private void closeAll(Window toSave)
+    {
+        foreach (Window window in windows)
+        {
+            if (window != toSave)
+            {
+                window.Close();
+            }
+        }
     }
 }

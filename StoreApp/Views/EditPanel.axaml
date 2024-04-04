@@ -29,6 +29,7 @@
                                 Name="ProductQuantity"
                                 Text="{Binding ProductQuantity}"/>
                         <Button Content="Изменить фото"
+                                HorizontalAlignment="Center"
                                 Command="{Binding ChangeImage}"/>
                         <Button
                                 Content="Изменить"

@@ -4,7 +4,7 @@ namespace StoreApp.Helpers;
 
 public class EventHelper: INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
     
     public void OnPropertyChanged(string propertyName)
     {

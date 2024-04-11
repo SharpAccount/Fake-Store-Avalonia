@@ -6,39 +6,39 @@ namespace StoreApp.Models;
 public class Product : EventHelper
 {
 
-    private string _name;
-    private int _price;
-    private int _quantity;
-    private int _maxQuantity;
+    private string name;
+    private int price;
+    private int quantity;
+    private int maxQuantity;
     private Bitmap image;
     public string Name
     {
-        get => _name;
+        get => name;
         set
         {
-            _name = value;
+            name = value;
             OnPropertyChanged(nameof(Name));
         }
     }
 
     public int Price
     {
-        get => _price;
+        get => price;
         set
         {
-            _price = value;
+            price = value;
             OnPropertyChanged(nameof(Price));
         }
     }
 
     public int Quantity
     {
-        get => _quantity;
+        get => quantity;
         set
         {
-            if (_maxQuantity >= value)
+            if (maxQuantity >= value)
             {
-                _quantity = value;
+                quantity = value;
                 OnPropertyChanged(nameof(Quantity));
             }
         }
@@ -58,7 +58,7 @@ public class Product : EventHelper
     {
         Name = name;
         Price = price;
-        _maxQuantity = quantity;
+        maxQuantity = quantity;
         Quantity = quantity;
         Image = img;
     }

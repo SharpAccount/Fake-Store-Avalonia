@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using StoreApp.Models;
+using StoreApp;
 
 namespace StoreApp.ViewModels;
 
@@ -10,6 +11,7 @@ public class MainWindowViewModel : ViewModelBase
 {
     private static ObservableCollection<Product> _products = new();
     private static ObservableCollection<Product> _selected = new();
+    private ObservableCollection<Product> _cart = new();
 
     private string _productName;
     private int _productPrice;
@@ -30,6 +32,17 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
+    public void AddToCart()
+    {
+        for (int i = 0; i < SelectedProducts.Count; i++)
+        {
+            if (!(Cart.Contains(SelectedProducts[i])))
+            {
+                Cart.Add(SelectedProducts[i]);
+            }
+        }
+    }
+
     public static ObservableCollection<Product> Products
     {
         get => _products;
@@ -40,6 +53,12 @@ public class MainWindowViewModel : ViewModelBase
     {
         get => _selected;
         set => _selected = value;
+    }
+    
+    public ObservableCollection<Product> Cart
+    {
+        get => _cart;
+        set => _cart = value;
     }
 
     public string ProductName

@@ -7,26 +7,14 @@ namespace StoreApp.ViewModels;
 
 public class CartViewModel: MainWindowViewModel, INotifyPropertyChanged
 {
-    private ObservableCollection<Product> added = new ();
-    private ObservableCollection<Product> addedCurrent = new ();
+    private ObservableCollection<Product> _addedCurrent = new();
     private string total;
     private int currentQuantity = 0;
 
-    public CartViewModel(ObservableCollection<Product> _added)
-    {
-        added = _added;
-        addedCurrent = _added;
-        foreach (var prod in addedCurrent)
-        {
-            prod.Quantity = 1;
-        }
-        setTotal();
-    }
-
     public ObservableCollection<Product> AddedCurrent
     {
-        get => addedCurrent;
-        set => addedCurrent = value;
+        get => _addedCurrent;
+        set => _addedCurrent = value;
     }
 
     public string Total
@@ -48,7 +36,7 @@ public class CartViewModel: MainWindowViewModel, INotifyPropertyChanged
     internal void setTotal()
     {
         int sum = 0;
-        foreach (Product prod in addedCurrent)
+        foreach (Product prod in _addedCurrent)
         {
             sum += prod.Price * prod.Quantity;
         }
@@ -63,7 +51,7 @@ public class CartViewModel: MainWindowViewModel, INotifyPropertyChanged
 
     internal void ClearSelected()
     {
-        foreach (Product bought in addedCurrent)
+        foreach (Product bought in _addedCurrent)
         {
             for (int i = 0; i < Products.Count; i++)
             {

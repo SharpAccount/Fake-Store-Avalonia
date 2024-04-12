@@ -8,14 +8,12 @@ namespace StoreApp.Views;
 
 public partial class CartPanel : Window
 {
-    public CartPanel(ObservableCollection<Product> _added)
+    public CartPanel()
     {
         InitializeComponent();
-        DataContext = new CartViewModel(_added);
+        DataContext = new CartViewModel();
     }
     
-    public CartPanel(){}
-
     public void IncreaseQuantity(object sender, RoutedEventArgs args)
     {
         var button = (Button)sender;
